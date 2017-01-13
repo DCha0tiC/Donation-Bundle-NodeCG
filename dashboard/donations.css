@@ -1,0 +1,55 @@
+body {
+    height: 500px;
+}
+.first-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.second-container {
+    padding-top: 10px;
+}
+.second-container paper-card {
+    display: flex;
+    justify-content:center;
+    font-size: 64px;
+}
+.third-container {
+    padding-top: 10px;
+}
+.donMsg-container {
+    border: 1px solid #bebebe;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+    word-wrap: break-word;
+    -webkit-scroll-snap-type: mandatory;
+    -webkit-scroll-snap-points-x: repeat(100%);
+}
+.donMsg-header {
+    border: 1px solid #bebebe; 
+    padding: 7px; 
+    margin: 9px; 
+    border-radius: 5px; 
+    background-color: #cecece; 
+    color: #555;
+    word-wrap:break-word;
+    text-align: center;
+    
+}
+.donMsg-flex:nth-of-type(1) {flex-grow:  5;}
+.donMsg-flex:nth-of-type(2) {flex-grow:  1;}
+.donMsg-flex {
+}
+section{
+    width: 100%;
+    height: 200px;
+    @apply(--layout-vertical);
+    overflow:auto;
+}
+section paper-dialog-scrollable {
+    @apply(--layout-flex);
+    overflow:auto;
+}

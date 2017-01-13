@@ -1,0 +1,41 @@
+{
+  "name": "teste-do-node-cg",
+  "version": "0.0.0",
+  "description": "Dynamic broadcast graphics rendered in a browser",
+  "homepage": "none",
+  "author": {
+    "name": "DChaos",
+    "email": "blabla@email.com",
+    "url": "none"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "none",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.8.0",
+    "dashboardPanels": [
+      {
+        "name": "donation-panel",
+        "title": "Donation Notifications",
+        "width": 4,
+        "file": "sub-panel.html",
+        "headerColor": "#6fc999"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "subsn.html",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "repository": "DCha0tiC/teste-do-node-cg"
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="donations.css">
+    <link rel="import" href="components/paper-badge/paper-badge.html">
+    <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-card/paper-card.html">
+    <link rel="import" href="components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+    <link rel="import" href="components/paper-toolbar/paper-toolbar.html">
+    <link rel="import" href="components/iron-icon/iron-icon.html">
+    <link rel="import" href="components/iron-icons/iron-icons.html">
+    <link rel="import" href="components/iron-icons/editor-icons.html">
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+</head>
+<body>
+    <div class="first-container">
+        <div class="ctnr">
+            <iron-icon id="donationAlert" class="big" icon="editor:attach-money"></iron-icon>
+            <style is="custom-style">
+                .big {
+                    --iron-icon-height: 32px;
+                    --iron-icon-width: 32px;
+                    --iron-icon-fill-color: green;
+                    padding-top: 5px;
+                }
+            </style>
+            <paper-badge for="donationAlert" class="bdge" label="1"></paper-badge>
+            <style is="custom-style">
+                .bdge {
+                    --paper-badge-margin-left: 10px;
+                    --paper-badge-margin-bottom: -20px;
+                    --paper-badge-background: red;
+                }
+            </style>
+        </div>
+        <paper-button raised><iron-icon icon="refresh" ></iron-icon>REFRESH</paper-button>  
+    </div>
+    <div class="second-container">
+        <paper-toolbar>
+            <div>Donations Total</div>
+        </paper-toolbar>
+        <paper-card>$76.316,23</paper-card>
+    </div>
+    <div class="third-container">
+            <paper-toolbar>
+              <div>Donators Messages</div>
+            </paper-toolbar>
+            <section>
+            <paper-dialog-scrollable>
+                <div class="donMsg-container">
+                    <div class="donMsg-header">
+                        <div class="donMsg-flex">Name</div>
+                        <div class="donMsg-flex">Donated: $33.33</div>
+                    </div>
+                    1</div>
+                <div class="donMsg-container">
+                    <div class="donMsg-header">
+                        <div class="donMsg-flex">Name</div>
+                        <div class="donMsg-flex">Donated $5.02</div></div> 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</div>
+                
+                <div class="donMsg-container">
+                    <div class="donMsg-header">
+                        <div class="donMsg-flex">Nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+                        <div class="donMsg-flex">Donated: $11.11</div>
+                        </div>
+                    3</div>
+                
+            </paper-dialog-scrollable>
+            </section>
+    </div>
+</body>
+    <script>
+    var access_token = 'ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi'; 
+    // Application OAuth Access Token
+    
+    var acesso = 'https://streamtip.com/api/tips?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi';
+    var socket = io.connect('https://streamtip.com', {
+        query: 'access_token='+encodeURIComponent(access_token)
+    });
+
+    socket.on('error', function(err) {
+        var code = err.split('::')[0];
+
+        if(code === '401') {
+            console.log('authentication failed');
+        } else if(code === '429') {
+            console.log('rate limited');
+        } else if(code === '400') {
+            console.log('bad request');
+        }
+    });
+
+    socket.on('newTip', function (data) {
+        // We got a new tip!
+        console.log(data);
+        /*
+            {
+                "_id" : "5517a758964def7137164238",
+                "amount" : "100.00",
+                "cents" : 10000,
+                "channel" : "5456997a68db94ce04a5f4c3",
+                "currencyCode" : "USD",
+                "currencySymbol" : "$",
+                "date" : "2014-06-04T22:58:01.202Z",
+                "email" : "concerndoge@test.com",
+                "user" : {
+                    "_id" : "5456997a68db94ce04a5f4c3",
+                    "avatar" : "https://link.to/avatar/image.png",
+                    "displayName" : "Test",
+                    "name" : "test",
+                    "provider" : "twitch",
+                    "providerId" : 10101
+                },
+                "goal" : {
+                    "_id" : "5455caccdd398acb7a28c3f0",
+                    "user" : "55c3c0e744fd81974d98fdb5",
+                    "cents" : 100000,
+                    "description" : "testing",
+                    "title" : "test goal",
+                    "countReversals" : false,
+                    "deleted" : false,
+                    "startDate" : "2015-08-01T11:15:00.000Z",
+                    "endDate" : "2015-08-05T11:15:00.000Z",
+                    "amount" : "1000.00",
+                    "progress" : {
+                        "percentage" : 10.5,
+                        "tips" : 2,
+                        "amount" : "105.00",
+                        "cents" : 10500,
+                        "currencyCode" : "USD",
+                        "currencySymbol" : "$"
+                    },
+                    "active" : true
+                },
+                "firstName" : "Test",
+                "lastName" : "User",
+                "note" : "such wow, very test",
+                "processor" : "PayPal",
+                "transactionId" : "4K2N0D835234BWKC",
+                "username" : "im_a_test_user"
+            }
+        */
+    });
+    </script>
+</html>
