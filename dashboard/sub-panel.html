@@ -8,12 +8,14 @@
     <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="components/paper-button/paper-button.html">
     <link rel="import" href="components/paper-card/paper-card.html">
-    <link rel="import" href="components/paper-scroll-header-panel/paper-scroll-header-panel.html">
     <link rel="import" href="components/paper-toolbar/paper-toolbar.html">
     <link rel="import" href="components/iron-icon/iron-icon.html">
     <link rel="import" href="components/iron-icons/iron-icons.html">
     <link rel="import" href="components/iron-icons/editor-icons.html">
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://streamtip.com/socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="animMessages.js"></script>
+    <script src="information.js"></script>
 </head>
 <body>
     <div class="first-container">
@@ -48,9 +50,9 @@
             <paper-toolbar>
               <div>Donators Messages</div>
             </paper-toolbar>
-            <section>
-            <paper-dialog-scrollable>
-                <div class="donMsg-container">
+            <section id="roda">
+            <paper-dialog-scrollable id="tips">
+                <div class="donMsg-container" id="ctnair">
                     <div class="donMsg-header">
                         <div class="donMsg-flex">Name</div>
                         <div class="donMsg-flex">Donated: $33.33</div>
@@ -71,15 +73,18 @@
             </paper-dialog-scrollable>
             </section>
     </div>
+    <paper-button raised id="butto">Test</paper-button>
 </body>
     <script>
     var access_token = 'ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi'; 
     // Application OAuth Access Token
+    var client_id = '53b428ff457b83000096fede';
     
-    var acesso = 'https://streamtip.com/api/tips?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi';
     var socket = io.connect('https://streamtip.com', {
-        query: 'access_token='+encodeURIComponent(access_token)
+        query: '/api/tips?client_id='+encodeURIComponent(client_id)+'&access_token='+encodeURIComponent(access_token)
     });
+        
+    //var socket = io.connect('https://streamtip.com/api/tips?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi');
 
     socket.on('error', function(err) {
         var code = err.split('::')[0];
@@ -90,6 +95,8 @@
             console.log('rate limited');
         } else if(code === '400') {
             console.log('bad request');
+        } else if(code === '200') {
+            console.log('funcionou!');
         }
     });
 
