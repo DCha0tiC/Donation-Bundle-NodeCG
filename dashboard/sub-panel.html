@@ -99,6 +99,10 @@
             console.log('funcionou!');
         }
     });
+        
+    socket.on('message', function(data){
+        console.log(data);
+    })
 
     socket.on('newTip', function (data) {
         // We got a new tip!
