@@ -1,5 +1,5 @@
 $.ajax({
-   url: 'https://streamtip.com/api/tips?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi',
+   url: 'url',
    data: {
       format: 'json'
    },
@@ -19,14 +19,10 @@ $.ajax({
 });
 
 /* Tentativa com WebSocket
-    var access_token = 'ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi'; 
+    var access_token = ''; 
     // Application OAuth Access Token
-    
-    var socket = new WebSocket('wss://streamtip.com/ws?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi');
         
     //var socket = new WebSocket('wss://streamtip.com/ws?access_token=' + encodeURIComponent(access_token));
-        
-    //var socket = new WebSocket('wss://streamtip.com/api/tips?client_id=53b428ff457b83000096fede&access_token=ZjQwZDMzYTI3Zjc1ZGRkZTZjYTEyOGVi');
         
     socket.onopen = function(){
         alert("Connection open...");
